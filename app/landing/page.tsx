@@ -1,4 +1,5 @@
 'use client';
+/* eslint-disable tailwindcss/no-contradicting-classname */
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
@@ -9,16 +10,46 @@ export default function LandingPage() {
     <div className="min-h-dvh bg-black flex flex-col relative">
       {/* Main background gradients that span the entire page */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Base gradient overlay - slightly increased spread */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,138,76,0.15)_0%,rgba(0,0,0,0)_80%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(233,76,161,0.15)_0%,rgba(0,0,0,0)_80%)]" />
+        {/* Deep space backdrop */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,#050505_0%,#000000_100%)]" />
 
-        {/* Enhanced mesh at top - slightly increased opacity */}
-        <div className="absolute top-0 inset-x-0 h-[800px] opacity-25 bg-[radial-gradient(circle_at_30%_20%,rgba(255,138,76,0.6)_0%,rgba(0,0,0,0)_60%)]" />
+        {/* Primary aurora effect at top */}
+        <div className="absolute top-0 inset-x-0 h-[140vh] opacity-40 bg-[conic-gradient(at_70%_30%,rgba(255,138,76,0.3)_40deg,rgba(249,115,22,0.2)_60deg,rgba(233,76,161,0.3)_190deg,rgba(244,63,94,0.5)_270deg,rgba(255,138,76,0.3)_310deg)] blur-3xl" />
 
-        {/* Mesh gradient in middle - slightly increased opacity and size */}
-        <div className="absolute top-1/3 -right-1/3 size-[900px] opacity-25 rounded-full blur-3xl bg-gradient-to-br from-orange-500 to-pink-500" />
-        <div className="absolute top-2/3 -left-1/3 size-[700px] opacity-25 rounded-full blur-3xl bg-gradient-to-tr from-pink-500 to-orange-400" />
+        {/* Secondary glow points */}
+        <div className="absolute top-[15%] left-[10%] opacity-40 w-[30vw] h-[30vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.4)_0%,rgba(0,0,0,0)_60%)] blur-2xl" />
+        <div className="absolute top-[40%] right-[5%] opacity-30 w-[25vw] h-[25vw] bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.4)_0%,rgba(0,0,0,0)_60%)] blur-2xl" />
+        <div className="absolute top-[70%] left-[20%] opacity-30 w-[20vw] h-[20vw] bg-[radial-gradient(circle_at_center,rgba(249,115,22,0.4)_0%,rgba(0,0,0,0)_70%)] blur-2xl" />
+
+        {/* Subtle star field effect */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0 bg-black">
+            {Array.from({ length: 100 }).map((_, i) => {
+              const top = Math.random() * 100;
+              const left = Math.random() * 100;
+              const size = Math.random() * 2 + 1;
+              const opacity = Math.random() * 0.7 + 0.3;
+
+              return (
+                <div
+                  key={`star-${i}-${top}-${left}`}
+                  className="absolute rounded-full bg-white"
+                  style={{
+                    top: `${top}%`,
+                    left: `${left}%`,
+                    width: `${size}px`,
+                    height: `${size}px`,
+                    opacity,
+                  }}
+                />
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Nebula effects */}
+        <div className="absolute top-1/4 -right-[10%] w-[90vw] h-[60vh] opacity-20 rounded-full blur-3xl bg-[conic-gradient(from_270deg_at_40%_60%,rgba(249,115,22,0.8)_0deg,rgba(244,63,94,0.8)_90deg,rgba(217,70,239,0.6)_180deg,rgba(249,115,22,0.4)_300deg)] mix-blend-screen" />
+        <div className="absolute top-2/3 -left-[20%] w-[80vw] h-[50vh] opacity-15 rounded-full blur-3xl bg-[conic-gradient(from_90deg_at_60%_40%,rgba(249,115,22,0.6)_0deg,rgba(244,63,94,0.6)_120deg,rgba(233,76,161,0.5)_240deg,rgba(249,115,22,0.4)_330deg)] mix-blend-screen" />
       </div>
 
       {/* Navigation */}
@@ -70,7 +101,12 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="min-h-screen relative w-full flex flex-col items-center justify-center overflow-hidden pt-20">
-        {/* Removed section-specific overlay that was causing contrast issues */}
+        {/* Section-specific light effects */}
+        <div className="absolute inset-0 z-[1] overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(0,0,0,0.9)_0%,rgba(0,0,0,0.4)_50%,rgba(0,0,0,0.9)_100%)]" />
+          <div className="absolute top-[20%] left-1/2 transform -translate-x-1/2 w-[90vw] max-w-[1400px] h-[60vh] opacity-30 bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.4)_0%,rgba(0,0,0,0)_50%)] blur-2xl" />
+          <div className="absolute inset-x-0 top-1/2 h-1/2 bg-gradient-to-b from-transparent to-black/70 backdrop-blur-sm" />
+        </div>
 
         <div className="flex flex-col items-center justify-center gap-6 md:gap-8 relative z-[2] px-4 md:px-6 max-w-5xl mx-auto">
           <span className="text-xs md:text-sm font-medium px-3 md:px-4 py-1 md:py-2 rounded-full bg-black/40 text-white/90 border border-white/10">
@@ -138,223 +174,21 @@ export default function LandingPage() {
         <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black to-transparent z-10" />
       </section>
 
-      {/* Features Section */}
-      <section className="py-16 md:py-20 relative" id="features">
-        {/* Section-specific overlay */}
-        <div className="absolute inset-0 z-[1]">
-          <div className="absolute inset-0 bg-black/40" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(255,138,76,0.08)_0%,rgba(0,0,0,0)_70%)]" />
-        </div>
-        <div className="container mx-auto px-4 md:px-6 relative z-[2]">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="inline-block px-3 py-1 text-xs font-medium bg-orange-500/20 text-orange-300 rounded-full mb-4">
-              FEATURES
-            </span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center text-white">
-              What Makes Caption.ma Special
-            </h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                id: 'feature-conversations',
-                title: 'Intelligent Conversations',
-                description:
-                  'Natural language understanding with advanced contextual awareness',
-                icon: '💬',
-              },
-              {
-                id: 'feature-grok',
-                title: 'Advanced AI Models',
-                description:
-                  'Access to Grok 3 and xAI for sophisticated reasoning and problem-solving',
-                icon: '⚡',
-              },
-              {
-                id: 'feature-image-gen',
-                title: 'AI Image Generation',
-                description:
-                  'Create stunning high-resolution images from text descriptions',
-                icon: '🖼️',
-              },
-            ].map((feature) => (
-              <Card
-                key={feature.id}
-                className="bg-zinc-800/30 border-zinc-700/50 p-6 md:p-8 backdrop-blur-sm hover:bg-zinc-800/50 transition-all group"
-              >
-                <div className="text-4xl md:text-5xl mb-4 md:mb-6 group-hover:scale-110 transition-transform">
-                  {feature.icon}
-                </div>
-                <h3 className="text-lg md:text-xl font-semibold text-white mb-2 md:mb-3">
-                  {feature.title}
-                </h3>
-                <p className="text-zinc-400 text-sm md:text-base">
-                  {feature.description}
-                </p>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Model Capabilities Section */}
-      <section className="py-16 md:py-20 relative overflow-hidden" id="models">
-        {/* Section-specific overlay */}
-        <div className="absolute inset-0 z-[1]">
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(233,76,161,0.1)_0%,rgba(0,0,0,0)_70%)]" />
-        </div>
-        <div className="container mx-auto px-4 md:px-6 relative z-[2]">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="inline-block px-3 py-1 text-xs font-medium bg-pink-500/20 text-pink-300 rounded-full mb-4">
-              AI MODELS
-            </span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center text-white mb-4">
-              Powered by Leading AI Technology
-            </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
-              Experience the combined power of today's most sophisticated AI
-              models in one seamless interface
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-8 md:mt-12">
-            {[
-              {
-                id: 'capability-grok',
-                title: 'Grok 3',
-                description:
-                  'Cutting-edge reasoning with contextual understanding',
-              },
-              {
-                id: 'capability-xai',
-                title: 'xAI',
-                description:
-                  "Advanced knowledge processing from Elon Musk's AI company",
-              },
-              {
-                id: 'capability-deepseek',
-                title: 'Deepseek 3',
-                description:
-                  'Enhanced natural language processing and comprehension',
-              },
-              {
-                id: 'capability-gemini',
-                title: 'Gemini 2.5',
-                description:
-                  "Google's multimodal AI for text, code, and image understanding",
-              },
-              {
-                id: 'capability-multilingual',
-                title: 'Multilingual',
-                description:
-                  'Communicate in multiple languages including Arabic and French',
-              },
-              {
-                id: 'capability-learning',
-                title: 'Continuous Learning',
-                description:
-                  'Self-improving system that gets better with every interaction',
-              },
-            ].map((capability) => (
-              <div
-                key={capability.id}
-                className="bg-zinc-800/20 border border-zinc-700/50 rounded-xl p-4 md:p-6 backdrop-blur-sm"
-              >
-                <h3 className="text-base md:text-lg font-semibold text-white mb-2">
-                  {capability.title}
-                </h3>
-                <p className="text-zinc-400 text-sm">
-                  {capability.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Use Cases Section */}
-      <section
-        className="py-16 md:py-20 relative overflow-hidden"
-        id="use-cases"
-      >
-        {/* Section-specific overlay */}
-        <div className="absolute inset-0 z-[1]">
-          <div className="absolute inset-0 bg-black/50" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_left,rgba(255,138,76,0.1)_0%,rgba(0,0,0,0)_70%)]" />
-        </div>
-        <div className="container mx-auto px-4 md:px-6 relative z-[2]">
-          <div className="text-center mb-12 md:mb-16">
-            <span className="inline-block px-3 py-1 text-xs font-medium bg-orange-500/20 text-orange-300 rounded-full mb-4">
-              APPLICATIONS
-            </span>
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-center text-white mb-4">
-              How You Can Use Caption.ma
-            </h2>
-            <p className="text-zinc-400 max-w-2xl mx-auto text-sm md:text-base">
-              From everyday tasks to specialized work, our AI adapts to your
-              needs
-            </p>
-          </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 mt-8">
-            {[
-              {
-                id: 'use-content',
-                title: 'Content Creation',
-                description:
-                  'Generate articles, social media posts, and creative writing',
-              },
-              {
-                id: 'use-research',
-                title: 'Research Assistant',
-                description: 'Find information and summarize complex topics',
-              },
-              {
-                id: 'use-images',
-                title: 'Visual Design',
-                description:
-                  'Create custom images for presentations and marketing',
-              },
-              {
-                id: 'use-learning',
-                title: 'Learning Tool',
-                description:
-                  'Explain concepts and help with educational content',
-              },
-              {
-                id: 'use-productivity',
-                title: 'Productivity Boost',
-                description:
-                  'Automate tasks and organize information efficiently',
-              },
-              {
-                id: 'use-brainstorming',
-                title: 'Brainstorming Partner',
-                description: 'Generate ideas and find creative solutions',
-              },
-            ].map((useCase) => (
-              <div
-                key={useCase.id}
-                className="bg-zinc-800/10 border border-zinc-700/30 rounded-xl p-4 backdrop-blur-sm hover:bg-zinc-800/30 transition-all"
-              >
-                <h3 className="text-base md:text-lg font-semibold text-white mb-2">
-                  {useCase.title}
-                </h3>
-                <p className="text-zinc-400 text-xs md:text-sm">
-                  {useCase.description}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Testimonials Section */}
       <section className="py-16 md:py-20 relative" id="testimonials">
         {/* Section-specific overlay */}
-        <div className="absolute inset-0 z-[1]">
-          <div className="absolute inset-0 bg-black/70" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(233,76,161,0.05)_0%,rgba(0,0,0,0)_70%)]" />
+        <div className="absolute inset-0 z-[1] pointer-events-none">
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(0,0,0,0.95),rgba(0,0,0,0.8),rgba(0,0,0,0.95))]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(244,63,94,0.1)_0%,rgba(0,0,0,0)_35%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_70%,rgba(249,115,22,0.1)_0%,rgba(0,0,0,0)_35%)]" />
+          <div
+            className="absolute inset-0 opacity-5"
+            style={{
+              backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%' height='100%' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`,
+              backgroundRepeat: 'repeat',
+              backgroundSize: '200px 200px',
+            }}
+          />
         </div>
         <div className="container mx-auto px-4 md:px-6 relative z-[2]">
           <div className="text-center mb-12 md:mb-16">
@@ -396,7 +230,7 @@ export default function LandingPage() {
                 <div className="flex flex-col h-full">
                   <div className="flex-1">
                     <p className="text-zinc-300 italic mb-4 text-sm md:text-base">
-                      "{testimonial.quote}"
+                      &quot;{testimonial.quote}&quot;
                     </p>
                   </div>
                   <div>
@@ -420,9 +254,11 @@ export default function LandingPage() {
         id="get-started"
       >
         {/* Section-specific overlay */}
-        <div className="absolute inset-0 z-[1]">
-          <div className="absolute inset-0 bg-gradient-to-br from-black via-black/90 to-black/95" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,138,76,0.1)_0%,rgba(0,0,0,0)_70%)]" />
+        <div className="absolute inset-0 z-[1] pointer-events-none">
+          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(0,0,0,0.95)_0%,rgba(0,0,0,0.8)_50%,rgba(0,0,0,0.95)_100%)]" />
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,rgba(249,115,22,0.03),rgba(244,63,94,0.03),rgba(249,115,22,0.03))]" />
+          <div className="absolute -top-10 left-1/2 transform -translate-x-1/2 w-[140%] h-40 opacity-20 bg-[linear-gradient(90deg,rgba(249,115,22,0),rgba(249,115,22,0.5),rgba(244,63,94,0.5),rgba(249,115,22,0))] blur-3xl" />
+          <div className="absolute top-1/3 left-1/2 transform -translate-x-1/2 w-full max-w-2xl h-full opacity-20 bg-[radial-gradient(circle_at_center,rgba(244,63,94,0.4)_0%,rgba(0,0,0,0)_50%)] blur-2xl" />
         </div>
         <div className="container mx-auto px-4 md:px-6 relative z-[2]">
           <div className="max-w-2xl mx-auto text-center">
