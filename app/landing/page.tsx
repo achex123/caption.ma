@@ -9,23 +9,23 @@ export default function LandingPage() {
     <div className="min-h-dvh bg-black flex flex-col relative">
       {/* Main background gradients that span the entire page */}
       <div className="fixed inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Base gradient overlay - increased contrast */}
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,138,76,0.15)_0%,rgba(0,0,0,0)_70%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(233,76,161,0.15)_0%,rgba(0,0,0,0)_70%)]" />
+        {/* Base gradient overlay - slightly increased spread */}
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(255,138,76,0.15)_0%,rgba(0,0,0,0)_80%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom,rgba(233,76,161,0.15)_0%,rgba(0,0,0,0)_80%)]" />
 
-        {/* Enhanced mesh at top with more contrast */}
-        <div className="absolute top-0 left-0 right-0 h-[800px] opacity-20 bg-[radial-gradient(circle_at_30%_20%,rgba(255,138,76,0.6)_0%,rgba(0,0,0,0)_50%)]" />
+        {/* Enhanced mesh at top - slightly increased opacity */}
+        <div className="absolute top-0 inset-x-0 h-[800px] opacity-25 bg-[radial-gradient(circle_at_30%_20%,rgba(255,138,76,0.6)_0%,rgba(0,0,0,0)_60%)]" />
 
-        {/* Mesh gradient in middle - increased opacity */}
-        <div className="absolute top-1/3 -right-1/4 w-[800px] h-[800px] opacity-20 rounded-full blur-3xl bg-gradient-to-br from-orange-500 to-pink-500" />
-        <div className="absolute top-2/3 -left-1/4 w-[600px] h-[600px] opacity-20 rounded-full blur-3xl bg-gradient-to-tr from-pink-500 to-orange-400" />
+        {/* Mesh gradient in middle - slightly increased opacity and size */}
+        <div className="absolute top-1/3 -right-1/3 size-[900px] opacity-25 rounded-full blur-3xl bg-gradient-to-br from-orange-500 to-pink-500" />
+        <div className="absolute top-2/3 -left-1/3 size-[700px] opacity-25 rounded-full blur-3xl bg-gradient-to-tr from-pink-500 to-orange-400" />
       </div>
 
       {/* Navigation */}
-      <header className="w-full py-4 px-4 md:px-6 absolute top-0 left-0 z-20 backdrop-blur-sm bg-black/10">
+      <header className="w-full p-4 md:px-6 absolute top-0 left-0 z-20 backdrop-blur-sm bg-black/10">
         <div className="container mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="text-white font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-pink-500 to-orange-400 flex items-center">
+            <div className="font-bold text-xl bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-pink-500 to-orange-400 flex items-center">
               <svg
                 data-testid="geist-icon"
                 height="16"
@@ -44,7 +44,7 @@ export default function LandingPage() {
               Caption.ma
             </div>
             <span className="bg-gradient-to-r from-orange-500 to-pink-500 text-white text-xs px-2 py-1 rounded-full hidden sm:block">
-              Morocco's Premier AI
+              Morocco&apos;s Premier AI
             </span>
           </div>
           <nav className="flex items-center space-x-3 md:space-x-6">
@@ -80,7 +80,7 @@ export default function LandingPage() {
           <div className="text-center">
             <h1 className="md:text-7xl text-5xl lg:text-8xl font-bold text-center bg-clip-text text-transparent bg-gradient-to-br from-white via-orange-300 to-pink-400 mb-4 tracking-tight">
               The full
-              <span className="inline-block mx-3 bg-lime-400 text-black px-3 rounded-lg transform -rotate-1">
+              <span className="inline-block mx-3 bg-lime-400 text-black px-3 rounded-lg -rotate-1">
                 AI
               </span>
               stack
@@ -91,8 +91,8 @@ export default function LandingPage() {
           </div>
 
           <p className="text-white/90 md:text-xl text-center max-w-2xl mx-auto font-light leading-relaxed">
-            Morocco's premier AI platform for conversation and image generation.
-            Build, deploy, and scale with ease.
+            Morocco&apos;s premier AI platform for conversation and image
+            generation. Build, deploy, and scale with ease.
           </p>
 
           <div className="flex items-center justify-center bg-zinc-900/50 backdrop-blur-md rounded-xl p-3 border border-white/5 mt-2 max-w-xl w-full">
@@ -109,7 +109,7 @@ export default function LandingPage() {
 
           <div className="flex flex-col sm:flex-row gap-4 mt-6 w-full max-w-md mx-auto">
             <Link href="/register" className="w-full sm:w-auto flex-1">
-              <Button className="w-full px-6 py-6 text-base font-medium bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:from-orange-600 hover:to-pink-600 shadow-lg shadow-orange-500/20 rounded-md border-0">
+              <Button className="w-full p-6 text-base font-medium bg-gradient-to-r from-orange-500 to-pink-500 text-white hover:from-orange-600 hover:to-pink-600 shadow-lg shadow-orange-500/20 rounded-md border-0">
                 Get Started Free
               </Button>
             </Link>
@@ -135,7 +135,7 @@ export default function LandingPage() {
         </div>
 
         {/* Abstract shapes at the bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent z-10" />
+        <div className="absolute bottom-0 inset-x-0 h-32 bg-gradient-to-t from-black to-transparent z-10" />
       </section>
 
       {/* Features Section */}
@@ -384,7 +384,7 @@ export default function LandingPage() {
               {
                 id: 'testimonial-michael',
                 quote:
-                  "Access to multiple AI models in one interface gives me versatility I can't find anywhere else.",
+                  'Access to multiple AI models in one interface gives me versatility I can&apos;t find anywhere else.',
                 author: 'Karim Benjelloun',
                 role: 'Researcher',
               },
@@ -452,7 +452,7 @@ export default function LandingPage() {
       <footer className="w-full p-4 md:p-6 border-t border-white/10 relative">
         <div className="container mx-auto relative z-[2]">
           <div className="flex flex-col md:flex-row items-center justify-between gap-3 md:gap-4">
-            <div className="text-white font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-pink-500 to-orange-400 flex items-center">
+            <div className="font-bold bg-clip-text text-transparent bg-gradient-to-r from-orange-500 via-pink-500 to-orange-400 flex items-center">
               <svg
                 data-testid="geist-icon"
                 height="16"
@@ -471,7 +471,8 @@ export default function LandingPage() {
               Caption.ma
             </div>
             <p className="text-xs md:text-sm text-white/60">
-              © {new Date().getFullYear()} caption.ma | Morocco's Premier AI
+              © {new Date().getFullYear()} caption.ma | Morocco&apos;s Premier
+              AI
             </p>
           </div>
         </div>
