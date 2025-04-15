@@ -4,8 +4,42 @@
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
+import { useEffect, useState } from 'react';
+
+// Define a type for the star objects
+type Star = {
+  id: string;
+  top: string;
+  left: string;
+  width: string;
+  height: string;
+  opacity: number;
+};
 
 export default function LandingPage() {
+  const [stars, setStars] = useState<Star[]>([]);
+
+  // Generate stars on the client side only
+  useEffect(() => {
+    const newStars = Array.from({ length: 100 }).map((_, i) => {
+      const top = Math.random() * 100;
+      const left = Math.random() * 100;
+      const size = Math.random() * 2 + 1;
+      const opacity = Math.random() * 0.7 + 0.3;
+
+      return {
+        id: `star-${i}-${top}-${left}`,
+        top: `${top}%`,
+        left: `${left}%`,
+        width: `${size}px`,
+        height: `${size}px`,
+        opacity,
+      };
+    });
+
+    setStars(newStars);
+  }, []);
+
   return (
     <div className="min-h-dvh bg-black flex flex-col relative">
       {/* Main background gradients that span the entire page */}
@@ -24,26 +58,19 @@ export default function LandingPage() {
         {/* Subtle star field effect */}
         <div className="absolute inset-0 opacity-10">
           <div className="absolute inset-0 bg-black">
-            {Array.from({ length: 100 }).map((_, i) => {
-              const top = Math.random() * 100;
-              const left = Math.random() * 100;
-              const size = Math.random() * 2 + 1;
-              const opacity = Math.random() * 0.7 + 0.3;
-
-              return (
-                <div
-                  key={`star-${i}-${top}-${left}`}
-                  className="absolute rounded-full bg-white"
-                  style={{
-                    top: `${top}%`,
-                    left: `${left}%`,
-                    width: `${size}px`,
-                    height: `${size}px`,
-                    opacity,
-                  }}
-                />
-              );
-            })}
+            {stars.map((star) => (
+              <div
+                key={star.id}
+                className="absolute rounded-full bg-white"
+                style={{
+                  top: star.top,
+                  left: star.left,
+                  width: star.width,
+                  height: star.height,
+                  opacity: star.opacity,
+                }}
+              />
+            ))}
           </div>
         </div>
 
