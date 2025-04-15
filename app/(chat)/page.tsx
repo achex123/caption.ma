@@ -13,7 +13,7 @@ export default function ChatRedirectPage() {
   return (
     <div className="flex h-screen w-full items-center justify-center">
       <div className="text-center">
-        <div className="animate-spin size-12 border-y-2 border-orange-500 border-r-2 border-l-2 border-gray-800 rounded-full mx-auto mb-4" />
+        <div className="animate-spin size-12 border-2 border-t-orange-500 border-r-transparent border-b-transparent border-l-transparent rounded-full mx-auto mb-4" />
         <p className="text-sm text-gray-400">Redirecting...</p>
       </div>
     </div>
