@@ -34,8 +34,23 @@ export function AppSidebar({ user }: { user: User | undefined }) {
               }}
               className="flex flex-row gap-3 items-center"
             >
-              <span className="text-lg font-semibold px-2 hover:bg-muted rounded-md cursor-pointer">
-                Chatbot
+              <span className="text-lg font-semibold px-2 hover:bg-muted rounded-md cursor-pointer flex items-center">
+                <svg
+                  data-testid="geist-icon"
+                  height="16"
+                  stroke-linejoin="round"
+                  viewBox="0 0 16 16"
+                  width="16"
+                  style={{ color: 'currentcolor', marginRight: '4px' }}
+                >
+                  <path
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                    d="M8 1L16 15H0L8 1Z"
+                    fill="currentColor"
+                  />
+                </svg>
+                Caption.ma
               </span>
             </Link>
             <Tooltip>

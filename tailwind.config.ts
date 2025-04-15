@@ -16,6 +16,15 @@ const config: Config = {
       screens: {
         'toast-mobile': '600px',
       },
+      animation: {
+        'sparkle-fade': 'sparkle-fade 2s ease-in-out infinite',
+      },
+      keyframes: {
+        'sparkle-fade': {
+          '0%, 100%': { opacity: '0', transform: 'scale(0)' },
+          '50%': { opacity: '1', transform: 'scale(1)' },
+        },
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
