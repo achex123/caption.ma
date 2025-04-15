@@ -1,43 +1,21 @@
-import { cookies } from 'next/headers';
+'use client';
 
-import { Chat } from '@/components/chat';
-import { DEFAULT_CHAT_MODEL } from '@/lib/ai/models';
-import { generateUUID } from '@/lib/utils';
-import { DataStreamHandler } from '@/components/data-stream-handler';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
 
-export default async function Page() {
-  const id = generateUUID();
+export default function ChatRedirectPage() {
+  const router = useRouter();
 
-  const cookieStore = await cookies();
-  const modelIdFromCookie = cookieStore.get('chat-model');
-
-  if (!modelIdFromCookie) {
-    return (
-      <>
-        <Chat
-          key={id}
-          id={id}
-          initialMessages={[]}
-          selectedChatModel={DEFAULT_CHAT_MODEL}
-          selectedVisibilityType="private"
-          isReadonly={false}
-        />
-        <DataStreamHandler id={id} />
-      </>
-    );
-  }
+  useEffect(() => {
+    router.replace('/chat');
+  }, [router]);
 
   return (
-    <>
-      <Chat
-        key={id}
-        id={id}
-        initialMessages={[]}
-        selectedChatModel={modelIdFromCookie.value}
-        selectedVisibilityType="private"
-        isReadonly={false}
-      />
-      <DataStreamHandler id={id} />
-    </>
+    <div className="flex h-screen w-full items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-orange-500 border-r-2 border-b-2 border-gray-800 mx-auto mb-4" />
+        <p className="text-sm text-gray-400">Redirecting...</p>
+      </div>
+    </div>
   );
 }
